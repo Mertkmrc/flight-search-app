@@ -16,8 +16,8 @@
 <form [formGroup]="inputForm" class="example-form">
   <mat-form-field class="example-full-width">
     <mat-label>Departure</mat-label>
-    <input type="text" matInput formControlName="departure" [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+    <input type="text" matInput formControlName="departure" [matAutocomplete]="autoDeparture">
+    <mat-autocomplete #autoDeparture="matAutocomplete" [displayWith]="displayFn">
       <mat-option *ngFor="let option of departureList | async" [value]="option">
         {{option.name}} ({{option.iata_code}}) a
       </mat-option>
@@ -26,8 +26,8 @@
 
   <mat-form-field class="example-full-width">
     <mat-label>Destination</mat-label>
-    <input type="text" matInput formControlName="destination" [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+    <input type="text" matInput formControlName="destination" [matAutocomplete]="autoDestination">
+    <mat-autocomplete #autoDestination="matAutocomplete" [displayWith]="displayFn">
       <mat-option *ngFor="let option of destinationList | async" [value]="option">
         {{option.name}} ({{option.iata_code}})
       </mat-option>
