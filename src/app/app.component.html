@@ -19,7 +19,7 @@
     <input type="text" matInput formControlName="departure" [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
       <mat-option *ngFor="let option of departureList | async" [value]="option">
-        {{option.name}} ({{option.iata_code}})
+        {{option.name}} ({{option.iata_code}}) a
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
