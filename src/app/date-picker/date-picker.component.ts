@@ -17,6 +17,8 @@ import {
   NgbDropdownModule
 } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-date-picker',
@@ -27,7 +29,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgbDatepicker,
     NgbDropdownModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIconModule,
+    MatButtonModule,
   ],
   templateUrl: './date-picker.component.html',
   styleUrls: ['./date-picker.component.scss']
@@ -57,6 +61,7 @@ export class DatePickerComponent {
     console.log(date);
     if (this.oneWay) {
       this.fromDate = date;
+      this.toDate = date;
       return;
     }
     if (!this.fromDate && !this.toDate) {

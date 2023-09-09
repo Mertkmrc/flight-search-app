@@ -1,6 +1,6 @@
 <form class="row row-cols-sm-auto">
   <div class="col-12 mb-5">
-    <div class="fs-6 fw-bolder mb-1 me-5">Başlangıç Tarihi:</div>
+    <div class="fs-6 fw-bolder mb-1 me-5">Departure Date:</div>
     <div class="d-flex">
       <div class="dp-hidden position-absolute">
         <div class="input-group">
@@ -50,13 +50,13 @@
               class="btn btn-secondary btn-sm m-2 float-start"
               (click)="fromDate = null; toDate = null; datepicker.close()"
             >
-              Temizle
+              Clear
             </button>
             <button
               class="btn btn-primary btn-sm m-2 float-end"
               (click)="datepicker.close()"
             >
-              Kaydet
+              Save
             </button>
           </ng-template>
         </div>
@@ -71,14 +71,18 @@
         />
       </div>
       <button
+        mat-mini-fab
+        color="primary"
         class="btn btn-primary btn-outline-primary bi bi-calendar3"
         (click)="datepicker.toggle()"
         type="button"
-      ></button>
+      >
+      <mat-icon>calendar_month</mat-icon>
+    </button>
     </div>
   </div>
-  <div class="col-12">
-    <div class="fs-6 fw-bolder mb-1 me-5">Bitiş Tarihi:</div>
+  <div class="col-12" *ngIf="!oneWay">
+    <div class="fs-6 fw-bolder mb-1 me-5">Return Date:</div>
     <div class="d-flex">
       <div class="z-2">
         <input
@@ -90,10 +94,14 @@
         />
       </div>
       <button
+        mat-mini-fab
+        color="primary"
         class="btn btn-primary btn-outline-primary bi bi-calendar3"
         (click)="datepicker.toggle()"
         type="button"
-      ></button>
+      >
+      <mat-icon>calendar_month</mat-icon>
+    </button>
     </div>
   </div>
 </form>
