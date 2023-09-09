@@ -1,0 +1,50 @@
+.dp-hidden {
+  width: 0;
+  margin: 0;
+  border: none;
+  padding: 0;
+  opacity: 1;
+}
+.custom-day {
+  text-align: center;
+  padding: 0.185rem 0.25rem;
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+}
+.custom-day.disabled {
+  color: gray;
+}
+.custom-day.focused {
+  background-color: #e6e6e6;
+}
+.custom-day.range {
+  background-color: rgb(2, 117, 216);
+  color: white;
+}
+.custom-day:hover {
+  background-color: #677180;
+}
+.custom-day.faded {
+  background-color: rgba(2, 117, 216, 0.5);
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+.z-2 {
+  z-index: 2;
+}
+body > .dropdown > .dropdown-menu {
+  min-width: 100%;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+  &.fixed {
+      opacity: 1;
+  }
+}
+.ngb-dp-day.disable {
+  background-color: lime !important;
+  color: blue !important;
+  opacity: 1 !important;
+}
