@@ -13,6 +13,7 @@ export class AppComponent implements OnInit{
   inputForm!: FormGroup;
   departureAirports: any[] = []
   destinationAirports: any[] = []
+  isOneWay: boolean = false;
   departureList: Observable<any[]>;
   destinationList: Observable<any[]>;
   constructor(
@@ -23,13 +24,13 @@ export class AppComponent implements OnInit{
 
   test() {
     console.log(this.inputForm);
+    console.log(this.isOneWay);
   }
   ngOnInit(): void {
     this.inputForm = this.fb.group({
       departure : ['',Validators.required],
       destination: ['',Validators.required],
-      roundTrip: [true],
-      oneWay: [false],
+      oneWay: [false, Validators.required],
       departureDate:['',Validators.required],
       arrivalDate: ['', Validators.required],
     });

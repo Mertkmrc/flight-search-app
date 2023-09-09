@@ -12,6 +12,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
 import { AsyncPipe } from '@angular/common';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,9 @@ import { AsyncPipe } from '@angular/common';
     AppRoutingModule,
     HttpClientModule,
     AsyncPipe,
+    MatRadioModule,
+    MatCardModule,
+    MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,

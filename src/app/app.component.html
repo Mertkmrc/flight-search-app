@@ -1,37 +1,41 @@
-<app-date-picker [oneWay]="false"></app-date-picker>
+<mat-card class="case-study-card">
+  <mat-card-content>
+    <form [formGroup]="inputForm" class="case-study-form">
 
-<!-- <form class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>Assignee</mat-label>
-    <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-        {{option.name}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-</form> -->
-
-
-<form [formGroup]="inputForm" class="example-form">
-  <mat-form-field class="example-full-width">
+  <section class="case-study-section">
+    <mat-radio-group formControlName="oneWay">
+      <mat-radio-button class="case-study-margin" [value]="false">Round Trip</mat-radio-button>
+      <mat-radio-button class="case-study-margin" [value]="true">One Way</mat-radio-button>
+    </mat-radio-group>
+  </section>
+  <section class="case-study-section">
+  <mat-form-field class="case-study-searchbox case-study-margin">
     <mat-label>Departure</mat-label>
     <input type="text" matInput formControlName="departure" [matAutocomplete]="autoDeparture">
     <mat-autocomplete #autoDeparture="matAutocomplete" [displayWith]="displayFn">
       <mat-option *ngFor="let option of departureList | async" [value]="option">
-        {{option.name}} ({{option.iata_code}}) a
+        {{option.name}} ({{option.iata_code}}), {{option.city}}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
 
-  <mat-form-field class="example-full-width">
+  <mat-form-field class="case-study-searchbox case-study-margin">
     <mat-label>Destination</mat-label>
     <input type="text" matInput formControlName="destination" [matAutocomplete]="autoDestination">
     <mat-autocomplete #autoDestination="matAutocomplete" [displayWith]="displayFn">
       <mat-option *ngFor="let option of destinationList | async" [value]="option">
-        {{option.name}} ({{option.iata_code}})
+        {{option.name}} ({{option.iata_code}}), {{option.city}}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
-  <button (click)="test()">test</button>
+  <app-date-picker class="case-study-datepicker case-study-margin"  [oneWay]="false"></app-date-picker>
+  <!-- <div class="case-study-datepicker case-study-margin">
+  </div> -->
+  <!-- <button mat-button color="primary">Primary</button> -->
+
+  <button mat-raised-button color="primary" (click)="test()">test</button>
+  </section>
 </form>
+
+  </mat-card-content>
+</mat-card>
