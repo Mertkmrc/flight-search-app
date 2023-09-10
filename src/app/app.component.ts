@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, map, startWith } from 'rxjs';
 import { FlightService } from './services/flight.service';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -25,6 +25,15 @@ export class AppComponent implements OnInit{
   flightData: any[] = []
   departureList: Observable<any[]>;
   destinationList: Observable<any[]>;
+
+  validation_msgs = {
+    'airports': [
+      { type: 'invalidAutocompleteObject', message: 'Input is not recognized. Click one of the options.' },
+      { type: 'required', message: 'Input is required.' }
+    ],
+
+  }
+
   constructor(
     private fb: FormBuilder,
     private flightService: FlightService,
@@ -38,8 +47,8 @@ export class AppComponent implements OnInit{
       (isLoading) ? this.spinner.show() : this.spinner.hide()
     })
     this.inputForm = this.fb.group({
-      departure : ['',Validators.required],
-      destination: ['',Validators.required],
+      departure : ['',[Validators.required, RequireMatch]],
+      destination: ['',[Validators.required, RequireMatch]],
       oneWay: [false, Validators.required],
       returnDate:['',Validators.required],
       departureDate: ['', Validators.required],
@@ -144,4 +153,11 @@ export class AppComponent implements OnInit{
 
 function compare(a: number | string, b: number | string, isAsc: boolean) {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+}
+export function RequireMatch(control: AbstractControl) {
+  // hack coz we are using an object
+  if (typeof control.value === 'string') {
+    return { 'invalidAutocompleteObject': { value: control.value } }
+  }
+  return null;
 }

@@ -32,6 +32,12 @@
                 {{ option.name }} ({{ option.iata_code }}), {{ option.city }}
               </mat-option>
             </mat-autocomplete>
+            <mat-error *ngFor="let validation of validation_msgs.airports">
+              <span *ngIf="inputForm.controls.departure.hasError(validation.type)">
+                {{validation.message}}
+              </span>
+            </mat-error>
+
           </mat-form-field>
 
           <mat-form-field class="case-study-searchbox case-study-margin">
@@ -53,6 +59,11 @@
                 {{ option.name }} ({{ option.iata_code }}), {{ option.city }}
               </mat-option>
             </mat-autocomplete>
+            <mat-error *ngFor="let validation of validation_msgs.airports">
+              <span *ngIf="inputForm.controls.destination.hasError(validation.type)">
+                {{validation.message}}
+              </span>
+            </mat-error>
           </mat-form-field>
           <app-date-picker
             class="case-study-datepicker case-study-margin"
@@ -100,7 +111,9 @@
       </div>
     </div>
     <div class="card-body">
+      <h2 *ngIf="tableData.length === 0">There are no flights for given day</h2>
       <table
+      *ngIf="tableData.length > 0 "
         matSort
         class="case-study-card-content"
         (matSortChange)="sortData($event)"

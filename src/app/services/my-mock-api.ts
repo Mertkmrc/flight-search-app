@@ -79,7 +79,6 @@ export class MyMockAPI {
         item.price = priceArr[idx]
       })
       out.push(returnMatch)
-
     }
     return of(out).pipe(delay(2000))
   }
