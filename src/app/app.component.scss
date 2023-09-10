@@ -2,11 +2,14 @@
   min-width: 150px;
   width: 100%;
 }
+.case-study-card-content {
+  width: 100%;
+}
 .case-study-card {
   display: flex;
-  align-content: center;
+  align-content: center !important;
   align-items: center;
-  width: 60%;
+  width: 100%;
 }
 .case-study-margin {
   margin: 0 10px;
@@ -21,5 +24,19 @@
   display: flex;
   align-content: center;
   align-items: center;
-  height: 60px;
+  height: 80px;
+}
+.main-div {
+  width: 100%;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.btn-check:checked + .btn,
+:not(.btn-check) + .btn:active,
+.btn:first-child:active,
+.btn.active,
+.btn.show {
+  color: blue;
+  background-color: rgb(49, 166, 206);
 }

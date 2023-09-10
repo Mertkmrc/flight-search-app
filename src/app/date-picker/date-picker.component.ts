@@ -108,14 +108,4 @@ export class DatePickerComponent {
       this.pickedDates.emit([this.fromDate, this.toDate]);
     }
   }
-
-  getDatetime(event: any) {
-    // setTimeout(() => {
-    //     let bodyDD: HTMLDivElement[] = <HTMLDivElement[]>Array.from(this._document.body.children).filter((child: HTMLDivElement) => child.className.indexOf('dropdown') >= 0);
-    //     if (bodyDD && bodyDD.length) {
-    //         this._renderer.setStyle(bodyDD[0], 'width', event.clientWidth + 'px');
-    //         this._renderer.addClass(bodyDD[0].children[0], 'fixed');
-    //     }
-    // }, 0);
-  }
 }

@@ -10,11 +10,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AsyncPipe } from '@angular/common';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { DelayInterceptor } from './services/delay.interceptor';
+import { MyMockAPI } from './services/my-mock-api';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -27,17 +31,26 @@ import {MatButtonModule} from '@angular/material/button';
     AsyncPipe,
     MatRadioModule,
     MatCardModule,
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
+    MatSortModule,
     MatInputModule,
     MatAutocompleteModule,
     BrowserAnimationsModule,
     DatePickerComponent,
     NgbModule
   ],
-  providers: [],
+  providers: [
+    MyMockAPI,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: DelayInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

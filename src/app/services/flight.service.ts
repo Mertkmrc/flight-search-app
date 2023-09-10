@@ -1,19 +1,27 @@
 import { Injectable } from '@angular/core'
-import { HttpClient } from '@angular/common/http'
-import { Observable } from 'rxjs'
-import { of } from 'rxjs'
-import * as airportData from '../../assets/airports.json'
+import { BehaviorSubject, Observable, tap } from 'rxjs'
+import { MyMockAPI } from './my-mock-api'
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class FlightService {
-  private airports = airportData
+  public isLoading = new BehaviorSubject<boolean>(false);
+
   constructor(
-    private http: HttpClient,
+    private mockApi: MyMockAPI,
   ) {}
 
-  getAirports(): Observable<any> {
-    console.log(this.airports.data);
-    return of(this.airports.data)
+
+  getAirports(): Observable<any[]> {
+    this.isLoading.next(true);
+    return this.mockApi.getAirports().pipe(tap(() => this.isLoading.next(false)))
   }
+
+  getFlights(payload: any): Observable<any[]> {
+    this.isLoading.next(true);
+    return this.mockApi.getFlights(payload).pipe(tap(() => this.isLoading.next(false)))
+  }
+
 }
