@@ -2,7 +2,7 @@
 
 
 ## Test Data
-The flight data is only at 19th and 20th September. To test Round Trip option please select "Hartsfield Jackson Atlanta Intl (ATL) - Atlanta" for your departure airport and "Los Angeles Intl (LAX) - Los Angeles" as destination airport.
+The flight data is only at 19th and 20th September. To test Round Trip option please select "Hartsfield Jackson Atlanta Intl (ATL) - Atlanta" for your departure airport and "Los Angeles Intl (LAX) - Los Angeles" as destination airport.  
 
 
 
