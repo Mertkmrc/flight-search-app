@@ -55,7 +55,7 @@ export class MyMockAPI {
   }
 
   getFlights(payload: FlightBody): Observable<any[]> {
-    const priceArr = [20,30,40,50,60]
+    const priceArr = [40,20,30,50,60]
     const flightList: flightDto[] = [...this.flights.data]
     const out: any[] = []
     const departureMatch = flightList.filter((o:any) => o.originAirport.code === payload.originCode &&
