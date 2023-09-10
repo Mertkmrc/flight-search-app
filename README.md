@@ -1,3 +1,22 @@
+
+
+
+## Test Data
+The flight data is only at 19th and 20th September. To test Round Trip option please select "Hartsfield Jackson Atlanta Intl (ATL) - Atlanta" for your departure airport and "Los Angeles Intl (LAX) - Los Angeles" as destination airport.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # FlightSearchApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
