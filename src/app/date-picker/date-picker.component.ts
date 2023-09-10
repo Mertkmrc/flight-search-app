@@ -11,14 +11,15 @@ import {
   NgbCalendar,
   NgbDate,
   NgbDateAdapter,
+  NgbDateParserFormatter,
   NgbDateStruct,
   NgbDatepicker,
   NgbDatepickerModule,
   NgbDropdownModule
 } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-date-picker',
@@ -31,7 +32,7 @@ import {MatIconModule} from '@angular/material/icon';
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatButtonModule,
+    MatButtonModule
   ],
   templateUrl: './date-picker.component.html',
   styleUrls: ['./date-picker.component.scss']
@@ -39,8 +40,6 @@ import {MatIconModule} from '@angular/material/icon';
 export class DatePickerComponent {
   hoveredDate!: NgbDate | null;
   @Output() pickedDates = new EventEmitter<NgbDate[]>();
-  @Input('pastDisabled') pastDisabled: boolean = false;
-  @Input('autoSelectNow') autoSelectNow: boolean = false;
   @Input('oneWay') oneWay: boolean = false;
   fromDate!: NgbDate | null;
   today!: NgbDate;
@@ -48,15 +47,10 @@ export class DatePickerComponent {
   minDate!: NgbDateStruct;
   markDisabled!: (date: NgbDate) => boolean;
   isAutoSelect = false;
-  constructor(private calendar: NgbCalendar) {
+  constructor(private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
     this.today = this.calendar.getToday();
-    this.fromDate = this.today;
   }
 
-  ngOnInit(): void {
-    if (this.autoSelectNow) {
-    }
-  }
   onDateSelection(date: NgbDate | any) {
     console.log(date);
     if (this.oneWay) {
