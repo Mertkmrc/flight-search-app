@@ -24,6 +24,7 @@
             <mat-autocomplete
               #autoDeparture="matAutocomplete"
               [displayWith]="displayFn"
+              (optionSelected)='departureSelected($event.option.value)'
             >
               <mat-option
                 *ngFor="let option of departureList | async"
@@ -84,7 +85,7 @@
 </div>
 <div class="main-div">
   <div class="card card-xxl-stretch w-75" *ngIf="showTable">
-    <div class="card-header">
+    <div class="card-header pt-4">
       <div class="d-flex justify-content-between">
         <div class="card-title case-study-margin">
           <h2> {{chosenDate | date: 'longDate'}}</h2>

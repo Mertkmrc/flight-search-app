@@ -133,18 +133,22 @@ export class AppComponent implements OnInit{
     });
   }
 
-
+  departureSelected(event: any) {
+    console.log(event);
+    console.log(this.destinationAirports);
+    this.destinationAirports = this.destinationAirports.filter(o => o.iata_code !== event.iata_code)
+  }
   displayFn(airport: any): string {
     return airport && airport.city ? airport.name +' - ' + airport.city : '';
   }
 
   private _filterDeparture(name: string): any[] {
     const filterValue = name.toLowerCase();
-    return [...this.departureAirports.filter(airport => airport.city.toLowerCase().includes(filterValue) || airport.iata_code.toLowerCase().includes(filterValue))];
+    return [...this.departureAirports.filter(airport => airport.city.toLowerCase().includes(filterValue) || airport.iata_code.toLowerCase().includes(filterValue) || airport.name.toLowerCase().includes(filterValue))];
   }
   private _filterDestination(name: string): any[] {
     const filterValue = name.toLowerCase();
-    let out = [...this.destinationAirports.filter(airport => airport.city.toLowerCase().includes(filterValue) || airport.iata_code.toLowerCase().includes(filterValue))]
+    let out = [...this.destinationAirports.filter(airport => airport.city.toLowerCase().includes(filterValue) || airport.iata_code.toLowerCase().includes(filterValue) || airport.name.toLowerCase().includes(filterValue))]
     if (this.inputForm.controls.departureDate.value !== '') {
       out = out.filter(o => o.iata_code !== this.inputForm.controls.destination.value.iata_code)
     }
