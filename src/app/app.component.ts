@@ -25,7 +25,7 @@ export class AppComponent implements OnInit{
   flightData: any[] = []
   departureList: Observable<any[]>;
   destinationList: Observable<any[]>;
-
+  chosenDate: string;
   validation_msgs = {
     'airports': [
       { type: 'invalidAutocompleteObject', message: 'Input is not recognized. Click one of the options.' },
@@ -96,6 +96,7 @@ export class AppComponent implements OnInit{
       this.showTable = true
       this.flightData = res
       this.tableData = this.flightData[0]
+      this.chosenDate = this.inputForm.controls.departureDate.value
     })
   }
 
@@ -103,8 +104,9 @@ export class AppComponent implements OnInit{
     return tab === this.currentTab ? 'show active' : '';
   }
   setTab(tab: Tabs) {
-    this.currentTab = tab;
     const idx = tab === 'Departure' ? 0 :1
+    this.chosenDate = tab === 'Departure' ? this.inputForm.controls.departureDate.value : this.inputForm.controls.returnDate.value
+    this.currentTab = tab;
     this.tableData = this.flightData[idx]
   }
   sortData(sort: Sort) {

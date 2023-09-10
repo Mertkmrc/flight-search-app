@@ -85,29 +85,34 @@
 <div class="main-div">
   <div class="card card-xxl-stretch w-75" *ngIf="showTable">
     <div class="card-header">
-      <div class="card-toolbar">
-        <ul class="nav">
-          <li class="nav-item">
-            <a
-              class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4 me-1"
-              [ngClass]="activeClass('Departure')"
-              (click)="setTab('Departure')"
-              data-bs-toggle="tab"
-            >
-              Departure
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4 me-1"
-              [ngClass]="activeClass('Return')"
-              (click)="setTab('Return')"
-              data-bs-toggle="tab"
-            >
-              Grup
-            </a>
-          </li>
-        </ul>
+      <div class="d-flex justify-content-between">
+        <div class="card-title case-study-margin">
+          <h2> {{chosenDate | date: 'longDate'}}</h2>
+        </div>
+        <div class="card-toolbar">
+          <ul class="nav">
+            <li class="nav-item">
+              <a
+                class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4 me-1"
+                [ngClass]="activeClass('Departure')"
+                (click)="setTab('Departure')"
+                data-bs-toggle="tab"
+              >
+                Departure
+              </a>
+            </li>
+            <li class="nav-item" *ngIf="!inputForm.controls.oneWay.value">
+              <a
+                class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4 me-1"
+                [ngClass]="activeClass('Return')"
+                (click)="setTab('Return')"
+                data-bs-toggle="tab"
+              >
+                Return
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
     <div class="card-body">
